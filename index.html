@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Queer Nerds York is a small, informal monthly social for LGBTQ+ adults in York. Find out when we’re meeting next.">
+  <meta name="referrer" content="no-referrer">
+  <title>Queer Nerds York</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fbf9fc;
+      --ink: #251d2b;
+      --muted: #564a60;
+      --purple: #694d7e;
+      --line: #e5dce9;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1.0625rem/1.6 system-ui, sans-serif;
+    }
+
+    main, footer {
+      width: min(100% - 2.5rem, 46rem);
+      margin-inline: auto;
+    }
+
+    header { padding-block: clamp(2.5rem, 7vw, 4.75rem) 2rem; }
+
+    .brand {
+      display: inline-block;
+      margin: 0;
+      padding: .3rem .85rem;
+      border-radius: 1.5rem;
+      background: var(--purple);
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 650;
+    }
+
+    h1, h2, p { margin: 0; }
+
+    h1 {
+      margin-block: .85rem 1rem;
+      font-size: clamp(2.35rem, 7vw, 4.25rem);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+      max-width: 13ch;
+    }
+
+    .burst {
+      display: inline-block;
+      width: .9em;
+      height: .9em;
+      vertical-align: top;
+      margin-left: -.12em;
+    }
+
+    header > p:last-child { max-width: 54ch; }
+
+    .meetup {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      padding: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 3.8rem 1fr;
+      gap: .45rem 1rem;
+      margin-block: 1rem;
+    }
+
+    dt { color: var(--muted); }
+    dd { margin: 0; font-weight: 650; }
+
+    .rabbit {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .updates { padding-block: 1.75rem 2rem; }
+    .updates p { margin-top: .5rem; color: var(--muted); }
+
+    .links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin: 1rem 0 0;
+      padding: 0;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: .4rem .8rem;
+      border: 1px solid #d7c8df;
+      border-radius: .6rem;
+      color: var(--purple);
+      font-weight: 650;
+      text-underline-offset: .2em;
+    }
+
+    .links a:hover { background: #efe8f4; }
+    a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+    footer {
+      padding-block: 1rem 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="brand">Queer Nerds York</p>
+      <h1>Looking for queer friends in York?
+        <svg class="burst" viewBox="0 0 54 54" aria-hidden="true" focusable="false" fill="none" stroke-width="4" stroke-linecap="round">
+          <path d="m16 18 4-11" stroke="#dd859d"/>
+          <path d="m24 21 9-9" stroke="#e6bc50"/>
+          <path d="m29 27 13-3" stroke="#91ba72"/>
+          <path d="m29 33 12 3" stroke="#7fb1d5"/>
+          <path d="m24 39 8 9" stroke="#b79ace"/>
+        </svg>
+      </h1>
+      <p>We’re a small, informal group for LGBTQ+ adults in York, especially people in their late 20s and 30s. We meet roughly once a month for coffee and a chat, usually on a weekday evening at City Screen Picturehouse Café.</p>
+    </header>
+
+    <section class="meetup" aria-labelledby="next-meetup">
+      <h2 id="next-meetup">Next meetup</h2>
+      <!-- Update the three values below for each meetup. -->
+      <dl>
+        <dt>Date</dt>
+        <dd>To be announced</dd>
+        <dt>Time</dt>
+        <dd>To be announced</dd>
+        <dt>Venue</dt>
+        <dd>To be confirmed</dd>
+      </dl>
+      <p class="rabbit"><strong>Just turn up and look for the stuffed rabbit on our table.</strong> You’re welcome to come on your own. There’s no need to sign up.</p>
+    </section>
+
+    <section class="updates" aria-labelledby="updates">
+      <h2 id="updates">Meetup updates</h2>
+      <p>We post meetup announcements on r/york and in the York Discord.</p>
+      <ul class="links">
+        <li><a href="https://www.reddit.com/r/york/search/?q=queers%20are%20having%20a%20drink&amp;restrict_sr=1&amp;sort=new">Reddit announcements</a></li>
+        <li><a href="https://discord.com/invite/mGpmGrFr4V">York Discord</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer>Independently organised in York.</footer>
+</body>
+</html>
