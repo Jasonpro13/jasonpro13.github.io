@@ -176,11 +176,17 @@
     .calendar-links a:hover { background: #efe8f4; }
     .calendar-links[hidden] { display: none; }
 
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1rem;
+    }
+
     .whatsapp-link {
       display: inline-flex;
       align-items: center;
       min-height: 2.75rem;
-      margin-top: 1rem;
       padding: .5rem 1rem;
       border-radius: .6rem;
       background: var(--purple);
@@ -208,32 +214,7 @@
       max-width: 60ch;
     }
 
-    .updates { padding-block: 1.75rem 2rem; }
-    .updates p { margin-top: .5rem; color: var(--muted); }
-
-    .links {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .65rem;
-      margin: 1rem 0 0;
-      padding: 0;
-    }
-
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.75rem;
-      padding: .4rem .8rem;
-      border: 1px solid #d7c8df;
-      border-radius: .6rem;
-      color: var(--purple);
-      font-weight: 650;
-      text-underline-offset: .2em;
-    }
-
-    .links a:hover { background: #efe8f4; }
-    a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+     a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
 
     footer {
       padding-block: 1rem 2rem;
@@ -279,8 +260,11 @@
         <a id="google-calendar" href="#" target="_blank" rel="noopener noreferrer">Add to Google Calendar</a>
         <a id="ics-calendar" href="#" download="queer-nerds-york.ics">Apple / Outlook (.ics)</a>
       </div>
-      <p class="attendance-note">If you’d like to come along, please message Rhys on WhatsApp or by text beforehand to confirm attendance. You're also welcome to ask questions!</p>
-      <a class="whatsapp-link" href="https://wa.me/447500668263" target="_blank" rel="noopener noreferrer">Message Rhys on WhatsApp</a>
+      <p class="attendance-note">Interested in coming along? Please message Rhys or Ross first. We'll let you know the details of the next meetup, and you're welcome to ask questions.</p>
+      <div class="contact-links">
+        <a class="whatsapp-link" href="https://wa.me/447500668263" target="_blank" rel="noopener noreferrer">WhatsApp Rhys</a>
+        <a class="whatsapp-link" href="https://wa.me/447907324447" target="_blank" rel="noopener noreferrer">WhatsApp Ross</a>
+      </div>
       </section>
       <aside class="past-meetups" aria-labelledby="past-meetups-heading">
         <h2 id="past-meetups-heading">Prior meetups</h2>
@@ -304,17 +288,10 @@
 
     <section class="organiser" aria-labelledby="organiser-heading">
       <h2 id="organiser-heading">Who’s organising this?</h2>
-      <p>Hi, I'm Rhys! I'm 35 and have lived in York for 15 years. I started these meetups in January 2026 because I wanted to make more queer friends locally and felt there weren't many casual queer social groups outside the universities. My interests are science fiction, architecture, and I edit Wikipedia!</p>
+      <p>Hi, I'm Rhys! I'm 35 and have lived in York for 15 years. Ross and I started these meetups together in January 2026 because we wanted to make more queer friends locally and felt there weren't many casual queer social groups outside the universities. My interests are science fiction, architecture, and I edit Wikipedia!</p>
+      <p>Hi, I'm Ross! I'm 28 and have lived in York since I was a teenager. My interests include music (Radiohead, Talking Heads, Nick Drake, David Bowie, jazz - lots of stuff!), films, narrative-y video games, and food (coffee especially!).</p>
     </section>
 
-    <section class="updates" aria-labelledby="updates">
-      <h2 id="updates">Meetup updates</h2>
-      <p>We also post meetup announcements on the /r/york subreddit and in the York Discord Server.</p>
-      <ul class="links">
-        <li><a href="https://www.reddit.com/r/york">Reddit</a></li>
-        <li><a href="https://discord.com/invite/mGpmGrFr4V">Discord</a></li>
-      </ul>
-    </section>
   </main>
   <script>
     // NEXT MEETUP — edit these five values when the next meeting is confirmed.
