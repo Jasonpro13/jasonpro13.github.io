@@ -63,27 +63,26 @@
 
     header > p:last-child { max-width: 54ch; }
 
+    /* One shared card: upcoming details and a quieter history column. */
     .meetup-layout {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(10.5rem, .85fr);
-      gap: 1rem;
+      grid-template-columns: minmax(0, 2.15fr) minmax(10rem, .85fr);
+      gap: clamp(1.25rem, 3vw, 1.75rem);
       align-items: start;
-    }
-
-    .meetup {
-      min-width: 0;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 1.25rem;
       padding: clamp(1.25rem, 4vw, 2rem);
     }
 
+    .meetup {
+      min-width: 0;
+    }
+
     .past-meetups {
       min-width: 0;
-      padding: 1.25rem;
-      border: 1px solid var(--line);
-      border-radius: 1.25rem;
-      background: #f4f0f6;
+      padding-left: 1.25rem;
+      border-left: 1px solid var(--line);
       color: var(--muted);
     }
 
@@ -107,9 +106,20 @@
       font-variant-numeric: tabular-nums;
     }
 
-    @media (max-width: 600px) {
-      .meetup-layout { grid-template-columns: minmax(0, 1fr); }
-      .past-meetups ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 680px) {
+      .meetup-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .past-meetups {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding: 1rem 0 0;
+      }
+
+      .past-meetups ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     h2 {
