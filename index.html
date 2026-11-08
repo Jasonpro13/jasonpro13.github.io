@@ -45,8 +45,18 @@
 
     h1, h2, p { margin: 0; }
 
-    h1 {
+    .hero-heading {
+      position: relative;
+      display: inline-block;
+      max-width: 34rem;
       margin-block: .85rem 1rem;
+    }
+
+    .hero-heading h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: .25rem .5rem .35rem .2rem;
       font-size: clamp(2.35rem, 7vw, 4.25rem);
       line-height: 1.04;
       letter-spacing: -.055em;
@@ -54,11 +64,13 @@
     }
 
     .burst {
-      display: inline-block;
-      width: .9em;
-      height: .9em;
-      vertical-align: top;
-      margin-left: -.12em;
+      position: absolute;
+      inset: -1rem -1.2rem -1rem -1.2rem;
+      width: calc(100% + 2.4rem);
+      height: calc(100% + 2rem);
+      z-index: 0;
+      pointer-events: none;
+      overflow: visible;
     }
 
     header > p:last-child { max-width: 54ch; }
@@ -145,15 +157,30 @@
   <main>
     <header>
       <p class="brand">Queer Nerds York</p>
-      <h1>Looking for queer friends in York?
-        <svg class="burst" viewBox="0 0 54 54" aria-hidden="true" focusable="false" fill="none" stroke-width="4" stroke-linecap="round">
-          <path d="m16 18 4-11" stroke="#dd859d"/>
-          <path d="m24 21 9-9" stroke="#e6bc50"/>
-          <path d="m29 27 13-3" stroke="#91ba72"/>
-          <path d="m29 33 12 3" stroke="#7fb1d5"/>
-          <path d="m24 39 8 9" stroke="#b79ace"/>
+      <div class="hero-heading">
+        <svg class="burst" viewBox="0 0 620 280" aria-hidden="true" focusable="false" fill="none" stroke-width="8" stroke-linecap="round">
+          <path d="M52 118 L22 96" stroke="#dd859d"/>
+          <path d="M64 150 L18 150" stroke="#e6bc50"/>
+          <path d="M52 184 L24 206" stroke="#91ba72"/>
+
+          <path d="M148 36 L132 8" stroke="#dd859d"/>
+          <path d="M206 24 L206 4" stroke="#e6bc50"/>
+          <path d="M266 30 L286 8" stroke="#91ba72"/>
+
+          <path d="M470 28 L490 8" stroke="#7fb1d5"/>
+          <path d="M534 24 L534 4" stroke="#b79ace"/>
+          <path d="M592 38 L608 12" stroke="#dd859d"/>
+
+          <path d="M576 120 L606 100" stroke="#e6bc50"/>
+          <path d="M586 154 L620 154" stroke="#91ba72"/>
+          <path d="M576 190 L606 212" stroke="#7fb1d5"/>
+
+          <path d="M126 246 L108 272" stroke="#b79ace"/>
+          <path d="M202 256 L202 278" stroke="#dd859d"/>
+          <path d="M282 248 L300 272" stroke="#e6bc50"/>
         </svg>
-      </h1>
+        <h1>Looking for queer friends in York?</h1>
+      </div>
       <p>We’re a small, informal group for LGBTQ+ adults in York. We meet roughly once a month for coffee and a chat, usually on a weekday evening at City Screen Picturehouse Café. We're particularly aimed at people in their late 20s to 30s who have similar nerdy interests.</p>
     </header>
 
