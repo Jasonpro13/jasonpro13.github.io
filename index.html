@@ -63,11 +63,53 @@
 
     header > p:last-child { max-width: 54ch; }
 
+    .meetup-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(10.5rem, .85fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
     .meetup {
+      min-width: 0;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 1.25rem;
       padding: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    .past-meetups {
+      min-width: 0;
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: #f4f0f6;
+      color: var(--muted);
+    }
+
+    .past-meetups h2 {
+      font-size: 1.1rem;
+      font-weight: 650;
+      color: var(--muted);
+    }
+
+    .past-meetups ul {
+      display: grid;
+      gap: .55rem;
+      list-style: none;
+      margin: .9rem 0 0;
+      padding: 0;
+    }
+
+    .past-meetups li {
+      font-size: .9rem;
+      line-height: 1.45;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 600px) {
+      .meetup-layout { grid-template-columns: minmax(0, 1fr); }
+      .past-meetups ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     h2 {
@@ -207,7 +249,8 @@
       <p>We’re a small, informal group for LGBTQ+ adults in York. We meet roughly once a month for coffee and a chat, usually on a weekday evening at City Screen Picturehouse Café. We're particularly aimed at people in their late 20s and 30s with broadly nerdy interests.</p>
     </header>
 
-    <section class="meetup" aria-labelledby="next-meetup">
+    <div class="meetup-layout">
+      <section class="meetup" aria-labelledby="next-meetup">
       <h2 id="next-meetup">Next meetup</h2>
       <!-- Edit only the nextMeetup block at the bottom of this file each month. -->
       <dl>
@@ -228,7 +271,20 @@
       </div>
       <p class="attendance-note">If you’d like to come along, please message Rhys on WhatsApp or by text beforehand to confirm attendance. You're also welcome to ask questions!</p>
       <a class="whatsapp-link" href="https://wa.me/447500668263" target="_blank" rel="noopener noreferrer">Message Rhys on WhatsApp</a>
-    </section>
+      </section>
+      <aside class="past-meetups" aria-labelledby="past-meetups-heading">
+        <h2 id="past-meetups-heading">Prior meetups</h2>
+        <!-- Update the dates below after each meetup. Most recent first. -->
+        <ul>
+          <li><time datetime="2026-09-24">24 Sep 2026</time></li>
+          <li><time datetime="2026-08-18">18 Aug 2026</time></li>
+          <li><time datetime="2026-06-18">18 Jun 2026</time></li>
+          <li><time datetime="2026-05-22">22 May 2026</time></li>
+          <li><time datetime="2026-05-15">15 May 2026</time></li>
+          <li><time datetime="2026-04-17">17 Apr 2026</time></li>
+        </ul>
+      </aside>
+    </div>
 
     <section class="first-visit" aria-labelledby="first-visit-heading">
       <h2 id="first-visit-heading">Coming along for the first time?</h2>
