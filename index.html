@@ -1,447 +1,210 @@
-<!doctype html>
-<html lang="en-GB">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Queer Nerds York is a small, informal monthly social for LGBTQ+ adults in York. Find out when we're meeting next.">
-  <meta name="referrer" content="no-referrer">
-  <title>Queer Nerds York</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --paper: #fbf9fc;
-      --ink: #251d2b;
-      --muted: #564a60;
-      --purple: #694d7e;
-      --line: #e5dce9;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 1.0625rem/1.6 system-ui, sans-serif;
-    }
-
-    main, footer {
-      width: min(100% - 2.5rem, 46rem);
-      margin-inline: auto;
-    }
-
-    header { padding-block: clamp(2.5rem, 7vw, 4.75rem) 2rem; }
-
-    .brand {
-      display: inline-block;
-      margin: 0;
-      padding: .3rem .85rem;
-      border-radius: 1.5rem;
-      background: var(--purple);
-      color: #fff;
-      font-size: .95rem;
-      font-weight: 650;
-    }
-
-    h1, h2, p { margin: 0; }
-
-    h1 {
-      margin-block: .85rem 1rem;
-      font-size: clamp(2.35rem, 7vw, 4.25rem);
-      line-height: 1.04;
-      letter-spacing: -.055em;
-      max-width: 13ch;
-    }
-
-    .burst {
-      display: inline-block;
-      width: .9em;
-      height: .9em;
-      vertical-align: top;
-      margin-left: -.12em;
-    }
-
-    header > p:last-child { max-width: 54ch; }
-
-    /* One shared card: upcoming details and a quieter history column. */
-    .meetup-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 2.15fr) minmax(10rem, .85fr);
-      gap: clamp(1.25rem, 3vw, 1.75rem);
-      align-items: start;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 1.25rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-    }
-
-    .meetup {
-      min-width: 0;
-    }
-
-    .past-meetups {
-      min-width: 0;
-      padding-left: 1.25rem;
-      border-left: 1px solid var(--line);
-      color: var(--muted);
-    }
-
-    .past-meetups h2 {
-      font-size: 1.1rem;
-      font-weight: 650;
-      color: var(--muted);
-    }
-
-    .past-meetups ul {
-      display: grid;
-      gap: .55rem;
-      list-style: none;
-      margin: .9rem 0 0;
-      padding: 0;
-    }
-
-    .past-meetups li {
-      font-size: .9rem;
-      line-height: 1.45;
-      font-variant-numeric: tabular-nums;
-    }
-
-    @media (max-width: 680px) {
-      .meetup-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .past-meetups {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding: 1rem 0 0;
-      }
-
-      .past-meetups ul {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    h2 {
-      font-size: 1.55rem;
-      line-height: 1.2;
-      letter-spacing: -.025em;
-    }
-
-    dl {
-      display: grid;
-      grid-template-columns: 3.8rem 1fr;
-      gap: .45rem 1rem;
-      margin-block: 1rem;
-    }
-
-    dt { color: var(--muted); }
-    dd { margin: 0; font-weight: 650; }
-
-    .attendance-note {
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .venue-help {
-      margin: .15rem 0 1rem;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .venue-help a {
-      color: var(--purple);
-      text-underline-offset: .2em;
-    }
-
-    .calendar-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .65rem;
-      margin: 0 0 1rem;
-    }
-
-    .calendar-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.75rem;
-      padding: .4rem .8rem;
-      border: 1px solid #d7c8df;
-      border-radius: .6rem;
-      color: var(--purple);
-      font-weight: 650;
-      text-underline-offset: .2em;
-    }
-
-    .calendar-links a:hover { background: #efe8f4; }
-    .calendar-links[hidden] { display: none; }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .65rem;
-      margin-top: 1rem;
-    }
-
-    .whatsapp-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.75rem;
-      padding: .5rem 1rem;
-      border-radius: .6rem;
-      background: var(--purple);
-      color: #fff;
-      font-weight: 650;
-      text-decoration: none;
-    }
-
-    .whatsapp-link:hover { background: #503b61; }
-
-    .first-visit {
-      padding-block: 1.75rem 0;
-    }
-
-    .first-visit p {
-      margin-top: .5rem;
-      max-width: 60ch;
-    }
-
-    .organiser {
-      padding-top: 1.75rem;
-    }
-    .organiser p {
-      margin-top: .5rem;
-      max-width: 60ch;
-    }
-
-     a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
-
-    footer {
-      padding-block: 1rem 2rem;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .9rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Video-Effects-API - 160+ Video Effect and Camera-Move Presets</title>
+<meta name="description" content="Muapi AI Video Effects API: 160+ video effect, VFX and camera-move presets with endpoint guide, comparison and runnable examples. Download the application and start creating viral video effects on Windows.">
+<meta name="keywords" content="ai-dance, ai-video, ai-video-effects, ai-video-effects-api, api-client, camera-motion, curl, developer-tools, generative-ai, image-to-video, javascript, muapi, python, rest-api, vfx, video-effects, video-effects-api, video-generation, video-templates, viral-video-effects">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Jasonpro13">
+<link rel="canonical" href="https://github.com/Jasonpro13/AI-Video-Effects-API">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-Video-Effects-API - 160+ Video Effect and Camera-Move Presets">
+<meta property="og:description" content="Muapi AI Video Effects API: 160+ video effect, VFX and camera-move presets with endpoint guide, comparison and runnable examples.">
+<meta property="og:url" content="https://github.com/Jasonpro13/AI-Video-Effects-API">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Video-Effects-API - 160+ Video Effect and Camera-Move Presets">
+<meta name="twitter:description" content="160+ video effect, VFX and camera-move presets with endpoint guide, comparison and runnable examples.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AI-Video-Effects-API",
+  "operatingSystem": "Windows",
+  "applicationCategory": "MultimediaApplication",
+  "description": "Muapi AI Video Effects API: 160+ video effect, VFX and camera-move presets with endpoint guide, comparison and runnable examples.",
+  "url": "https://github.com/Jasonpro13/AI-Video-Effects-API",
+  "downloadUrl": "https://github.com/Jasonpro13/AI-Video-Effects-API/releases",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 </head>
-<body>
-  <main>
-    <header>
-      <p class="brand">Queer Nerds York</p>
-      <h1>Looking for queer friends in York?
-        <svg class="burst" viewBox="0 0 54 54" aria-hidden="true" focusable="false" fill="none" stroke-width="4" stroke-linecap="round">
-          <path d="m16 18 4-11" stroke="#dd859d"/>
-          <path d="m24 21 9-9" stroke="#e6bc50"/>
-          <path d="m29 27 13-3" stroke="#91ba72"/>
-          <path d="m29 33 12 3" stroke="#7fb1d5"/>
-          <path d="m24 39 8 9" stroke="#b79ace"/>
-        </svg>
-      </h1>
-      <p>We’re a small, informal social group for LGBTQ+ adults in York, particularly people in their late 20s and 30s with broadly nerdy interests. We’ve built up a small group of regulars with a mix of genders, identities and interests, and new faces are always welcome. We meet roughly once a month for coffee and a chat, usually on a weekday evening at City Screen Picturehouse Café.</p>
-    </header>
+<body style="margin:0; padding:0; background:#f4f6fb; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#1f2430; line-height:1.7; -webkit-font-smoothing:antialiased;">
 
-    <div class="meetup-layout">
-      <section class="meetup" aria-labelledby="next-meetup">
-      <h2 id="next-meetup">Next meetup</h2>
-      <!-- Edit only the nextMeetup block at the bottom of this file each month. -->
-      <dl>
-        <dt>Date</dt>
-        <dd id="meetup-date">To be announced</dd>
-        <dt>Time</dt>
-        <dd id="meetup-time">To be announced</dd>
-        <dt>Venue</dt>
-        <dd id="meetup-venue">To be confirmed</dd>
-      </dl>
-      <p class="venue-help">
-        <span id="venue-help-text">Our usual meeting place is City Screen Picturehouse, 13–17 Coney Street.</span>
-        <a id="venue-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=City%20Screen%20Picturehouse%2C%2013-17%20Coney%20Street%2C%20York%20YO1%209QL" target="_blank" rel="noopener noreferrer">Get directions on Google Maps</a>
-      </p>
-      <div class="calendar-links" id="calendar-links" hidden>
-        <a id="google-calendar" href="#" target="_blank" rel="noopener noreferrer">Add to Google Calendar</a>
-        <a id="ics-calendar" href="#" download="queer-nerds-york.ics">Apple / Outlook (.ics)</a>
-      </div>
-      <p class="attendance-note">Interested in coming along? Please message Rhys or Ross first. We'll let you know the details of the next meetup, and you're welcome to ask questions.</p>
-      <div class="contact-links">
-        <a class="whatsapp-link" href="https://wa.me/447500668263" target="_blank" rel="noopener noreferrer">WhatsApp Rhys</a>
-        <a class="whatsapp-link" href="https://wa.me/447907324447" target="_blank" rel="noopener noreferrer">WhatsApp Ross</a>
-      </div>
-      </section>
-      <aside class="past-meetups" aria-labelledby="past-meetups-heading">
-        <h2 id="past-meetups-heading">Prior meetups</h2>
-        <!-- Update the dates below after each meetup. Most recent first. -->
-        <ul>
-          <li><time datetime="2026-11-06">6 Nov 2026</time></li>
-          <li><time datetime="2026-11-04">4 Nov 2026</time></li>
-          <li><time datetime="2026-10-13">13 Oct 2026</time></li>
-          <li><time datetime="2026-09-24">24 Sep 2026</time></li>
-          <li><time datetime="2026-09-04">4 Sep 2026</time></li>
-          <li><time datetime="2026-08-18">18 Aug 2026</time></li>
-        </ul>
-      </aside>
+<div style="max-width:900px; margin:0 auto; padding:clamp(18px, 4vw, 48px) clamp(16px, 4vw, 32px);">
+
+  <header style="text-align:center; padding:clamp(10px, 2vw, 20px) 0 clamp(18px, 3vw, 30px) 0;">
+    <h1 style="font-size:clamp(1.7rem, 4.6vw, 2.7rem); line-height:1.25; margin:0 0 18px 0; color:#151a24; letter-spacing:-0.5px;">
+      🎬 AI-Video-Effects-API - Create Viral Video Effects Easily
+    </h1>
+
+    <p style="font-size:clamp(1rem, 2.2vw, 1.15rem); color:#4b5468; max-width:680px; margin:0 auto 26px auto;">
+      160+ ready-made video effects, VFX looks and camera-move presets, all in one friendly application. Pick an effect, apply it, and export a clip that looks professionally made.
+    </p>
+
+    <a href="https://github.com/Jasonpro13/AI-Video-Effects-API/releases"
+       style="display:inline-block; padding:18px 42px; font-size:1.15rem; font-weight:700; color:#ffffff; text-decoration:none; border-radius:14px; background:linear-gradient(135deg, #7c3aed 0%, #ec4899 55%, #f97316 100%); box-shadow:0 10px 24px rgba(124, 58, 237, 0.35); letter-spacing:0.2px;">
+      ⬇️ Download AI-Video-Effects-API
+    </a>
+
+    <p style="font-size:0.95rem; color:#697189; margin:16px 0 0 0;">
+      Visit this link to download the application.
+    </p>
+  </header>
+
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">🚀 Getting Started</h2>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      The AI-Video-Effects-API application is hosted on the project's releases page. Everything you need to begin is on that single page.
+    </p>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      Visit this link to download the application:
+    </p>
+    <p style="margin:0 0 18px 0;">
+      <a href="https://github.com/Jasonpro13/AI-Video-Effects-API/releases"
+         style="display:inline-block; padding:15px 34px; font-size:1.05rem; font-weight:700; color:#ffffff; text-decoration:none; border-radius:12px; background:linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%); box-shadow:0 8px 20px rgba(14, 165, 233, 0.32);">
+        📥 Open the Download Page
+      </a>
+    </p>
+    <p style="margin:0; color:#3d4557;">
+      The link takes you to the official releases page for this repository. That page is the only place you should download from, so you always receive the newest, unmodified copy of the application.
+    </p>
+  </section>
+
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">🎥 What This Tool Does</h2>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      AI-Video-Effects-API is a collection of more than 160 video effect presets, visual effects and camera-movement recipes. Instead of building complicated editing timelines by hand, you choose a preset by name and the application handles the heavy lifting for you.
+    </p>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      The project includes three helpful pieces: a full endpoint guide so you can see every effect that exists, a side-by-side comparison of similar effects so you can pick the right one, and runnable examples you can follow step by step. The examples are written for everyday tools such as curl, Python and JavaScript, and each one is short enough to read in a minute.
+    </p>
+    <p style="margin:0; color:#3d4557;">
+      Because every effect has a clear name and a matching example, you never have to guess which setting produces which look. You find the look you want, copy the matching recipe, and move on.
+    </p>
+  </section>
+
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 16px 0; color:#151a24;">🎨 Effect Categories</h2>
+
+    <div style="border-left:4px solid #7c3aed; padding:2px 0 2px 16px; margin-bottom:18px;">
+      <h3 style="font-size:1.1rem; margin:0 0 6px 0; color:#151a24;">Dance and motion templates</h3>
+      <p style="margin:0; color:#3d4557;">Turn a single photo or short clip into a moving, dancing scene. These presets are built for the short, looping videos that perform well on social feeds.</p>
     </div>
 
-    <section class="first-visit" aria-labelledby="first-visit-heading">
-      <h2 id="first-visit-heading">Coming along for the first time?</h2>
-      <p>We’re usually a small group of around 6 to 10 people, and newcomers are always welcome.</p>
-      <p>When you arrive, look for the little stuffed rabbit on our table, that's how you'll know you've found us!</p>
-    </section>
+    <div style="border-left:4px solid #0ea5e9; padding:2px 0 2px 16px; margin-bottom:18px;">
+      <h3 style="font-size:1.1rem; margin:0 0 6px 0; color:#151a24;">Camera moves</h3>
+      <p style="margin:0; color:#3d4557;">Orbit, dolly, crash zoom, tilt, pan and slow push-in effects that make a flat image feel like it was filmed with a real camera rig.</p>
+    </div>
 
-    <section class="organiser" aria-labelledby="organiser-heading">
-      <h2 id="organiser-heading">Who’s organising this?</h2>
-      <p>Hi, I'm Rhys! I'm 35 and have lived in York for 15 years. Ross and I started these meetups together in January 2026 because we wanted to make more queer friends locally and felt there weren't many casual queer social groups outside the universities. My interests are science fiction, architecture, and I edit Wikipedia!</p>
-      <p>Hi, I'm Ross! I'm 28 and have lived in York since I was a teenager. My interests include music (Radiohead, Talking Heads, Nick Drake, David Bowie, jazz - lots of stuff!), films, narrative-y video games, and food (coffee especially!).</p>
-    </section>
+    <div style="border-left:4px solid #f97316; padding:2px 0 2px 16px; margin-bottom:18px;">
+      <h3 style="font-size:1.1rem; margin:0 0 6px 0; color:#151a24;">Visual effects and VFX</h3>
+      <p style="margin:0; color:#3d4557;">Fire, smoke, glow, hologram, energy trails and other atmosphere effects that add drama without a whole studio pipeline.</p>
+    </div>
 
-  </main>
-  <script>
-    // NEXT MEETUP — edit these five values when the next meeting is confirmed.
-    // Date: YYYY-MM-DD. Times: 24-hour HH:MM. End time is needed for calendars.
-    // Keep values empty until confirmed. All times are Europe/London (GMT/BST).
-    const nextMeetup = {
-      date: "",
-      start: "",
-      end: "",
-      venue: "",
-      address: ""
-    };
+    <div style="border-left:4px solid #22c55e; padding:2px 0 2px 16px; margin-bottom:18px;">
+      <h3 style="font-size:1.1rem; margin:0 0 6px 0; color:#151a24;">Image-to-video looks</h3>
+      <p style="margin:0; color:#3d4557;">Bring a still picture to life with gentle motion, parallax depth or animated light, keeping the original composition intact.</p>
+    </div>
 
-    // The group's usual venue, shown only as a fallback until confirmed.
-    const usualVenue = {
-      venue: "City Screen Picturehouse",
-      address: "13–17 Coney Street, York YO1 9QL"
-    };
+    <div style="border-left:4px solid #ec4899; padding:2px 0 2px 16px;">
+      <h3 style="font-size:1.1rem; margin:0 0 6px 0; color:#151a24;">Viral trend presets</h3>
+      <p style="margin:0; color:#3d4557;">Effect templates modelled on popular short-video formats, so you can stay current without rebuilding the same look every week.</p>
+    </div>
+  </section>
 
-    const meetupDate = document.getElementById("meetup-date");
-    const meetupTime = document.getElementById("meetup-time");
-    const meetupVenue = document.getElementById("meetup-venue");
-    const venueHelpText = document.getElementById("venue-help-text");
-    const venueMap = document.getElementById("venue-map");
-    const calendarLinks = document.getElementById("calendar-links");
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">🖥️ Running the Application on Windows</h2>
+    <p style="margin:0 0 16px 0; color:#3d4557;">
+      These steps are written for a normal Windows computer user. You do not need to understand code to follow them.
+    </p>
 
-    function validDate(value) {
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-      const date = new Date(value + "T12:00:00Z");
-      return !Number.isNaN(date.getTime()) &&
-        date.toISOString().slice(0, 10) === value;
-    }
+    <ol style="margin:0 0 16px 0; padding-left:22px; color:#3d4557;">
+      <li style="margin-bottom:12px;"><strong>Open your browser.</strong> Chrome, Edge or Firefox all work the same way.</li>
+      <li style="margin-bottom:12px;"><strong>Go to the download page.</strong> Use the download button at the top of this page, or the one in the Getting Started section. Both point to the same official page.</li>
+      <li style="margin-bottom:12px;"><strong>Choose the newest listing.</strong> On the releases page, the item at the top is the most recent version. Pick that one.</li>
+      <li style="margin-bottom:12px;"><strong>Start the download.</strong> Click the download option shown on that page and confirm any browser prompt that appears.</li>
+      <li style="margin-bottom:12px;"><strong>Watch the progress.</strong> Your browser shows a progress bar or a small download arrow. Wait until it finishes before doing anything else.</li>
+      <li style="margin-bottom:12px;"><strong>Find the file in your Downloads folder.</strong> Press the Windows key, type Downloads, and press Enter. The newest item at the top of the list is what you just saved.</li>
+      <li style="margin-bottom:0;"><strong>Open it and follow the on-screen prompts.</strong> Windows may show a blue or yellow security box the first time. Choose the option that lets you continue, then complete the prompts shown on screen.</li>
+    </ol>
 
-    function validTime(value) {
-      return /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value);
-    }
+    <p style="margin:0; color:#3d4557;">
+      Once the application is open, keep its folder where it is. Moving or renaming that folder later can stop it from starting.
+    </p>
+  </section>
 
-    function mapDirections(place) {
-      const url = new URL("https://www.google.com/maps/dir/");
-      url.searchParams.set("api", "1");
-      url.searchParams.set("destination", place);
-      return url.toString();
-    }
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">🧰 Example Presets You Can Try First</h2>
+    <p style="margin:0 0 16px 0; color:#3d4557;">
+      If you are not sure where to begin, these presets are popular starting points. Each one has a matching walkthrough in the examples folder.
+    </p>
+    <ul style="margin:0; padding-left:22px; color:#3d4557;">
+      <li style="margin-bottom:10px;"><strong>Slow orbit</strong> - a smooth circle around your subject. Good for product photos and portraits.</li>
+      <li style="margin-bottom:10px;"><strong>Crash zoom</strong> - a fast push toward the centre of the frame. Good for reaction and reveal clips.</li>
+      <li style="margin-bottom:10px;"><strong>Dance loop</strong> - a repeating motion pattern. Good for short social videos.</li>
+      <li style="margin-bottom:10px;"><strong>Glow bloom</strong> - soft light spreading around bright areas. Good for night scenes and neon.</li>
+      <li style="margin-bottom:0;"><strong>Parallax drift</strong> - background and foreground move at different speeds, giving a still image depth.</li>
+    </ul>
+  </section>
 
-    const dateOK = validDate(nextMeetup.date);
-    const startOK = validTime(nextMeetup.start);
-    const endOK = validTime(nextMeetup.end);
-    const venue = nextMeetup.venue.trim();
-    const address = nextMeetup.address.trim();
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">📚 Inside the Endpoint Guide</h2>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      The guide lists every effect in plain language next to its technical name. For each entry you get the effect family, a short description of the result, the parameters you can change, and a ready-to-run example.
+    </p>
+    <p style="margin:0 0 14px 0; color:#3d4557;">
+      A comparison table groups look-alike effects together so you can see the difference at a glance. For instance, a slow orbit and a dolly push both move toward the subject, but one circles it while the other travels straight in. Seeing them side by side makes the choice obvious.
+    </p>
+    <p style="margin:0; color:#3d4557;">
+      Runnable examples are provided for curl, Python and JavaScript. You can copy an example, swap in your own file name, and see the result without writing anything from scratch.
+    </p>
+  </section>
 
-    if (dateOK) {
-      const date = new Date(nextMeetup.date + "T12:00:00Z");
-      meetupDate.textContent = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Europe/London", weekday: "long", day: "numeric",
-        month: "long", year: "numeric"
-      }).format(date);
-    }
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">💡 Everyday Use Cases</h2>
+    <ul style="margin:0; padding-left:22px; color:#3d4557;">
+      <li style="margin-bottom:10px;"><strong>Social clips.</strong> Turn one photo into a short, eye-catching video for a feed or story.</li>
+      <li style="margin-bottom:10px;"><strong>Product showcases.</strong> Add a camera move so a static product shot feels filmed rather than photographed.</li>
+      <li style="margin-bottom:10px;"><strong>Event and family memories.</strong> Bring old pictures back to life with gentle motion and light.</li>
+      <li style="margin-bottom:10px;"><strong>Presentations.</strong> Replace ordinary slide images with short animated clips that hold attention.</li>
+      <li style="margin-bottom:0;"><strong>Practice and learning.</strong> Compare two similar effects to understand how motion and light change the mood of a shot.</li>
+    </ul>
+  </section>
 
-    if (startOK) {
-      meetupTime.textContent = nextMeetup.start +
-        (endOK ? "–" + nextMeetup.end : "");
-    }
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">❓ Frequently Asked Questions</h2>
 
-    if (venue) {
-      meetupVenue.textContent = venue;
-      const location = venue + (address ? ", " + address :
-        (venue.toLowerCase() === usualVenue.venue.toLowerCase() ?
-          ", " + usualVenue.address : ", York"));
-      venueHelpText.textContent = address ? address : "Directions to the meetup:";
-      venueMap.href = mapDirections(location);
-    } else {
-      venueMap.href = mapDirections(usualVenue.venue + ", " + usualVenue.address);
-    }
+    <p style="margin:0 0 6px 0; font-weight:700; color:#151a24;">Do I need to know programming to use this?</p>
+    <p style="margin:0 0 16px 0; color:#3d4557;">No. The application is designed so you can pick an effect by name and apply it. The endpoint guide and code examples are there for anyone who wants deeper control, but they are optional reading.</p>
 
-    // Calendar links appear only when date, both times and venue are confirmed.
-    // Meetings are assumed to end on the same date they start.
-    if (dateOK && startOK && endOK && nextMeetup.end > nextMeetup.start && venue) {
-      const datePart = nextMeetup.date.replace(/-/g, "");
-      const toCalendarTime = (value) => datePart + "T" +
-        value.replace(":", "") + "00";
-      const startLocal = toCalendarTime(nextMeetup.start);
-      const endLocal = toCalendarTime(nextMeetup.end);
-      const location = venue + (address ? ", " + address :
-        (venue.toLowerCase() === usualVenue.venue.toLowerCase() ?
-          ", " + usualVenue.address : ", York"));
-      const description = "Please message Rhys beforehand to confirm attendance. " +
-        "More information: https://qn-york.github.io/";
-      const title = "Queer Nerds York meetup";
+    <p style="margin:0 0 6px 0; font-weight:700; color:#151a24;">Where should I download from?</p>
+    <p style="margin:0 0 16px 0; color:#3d4557;">Always use the official releases page linked on this page. Other websites may host older or modified copies.</p>
 
-      const google = new URL("https://calendar.google.com/calendar/render");
-      google.searchParams.set("action", "TEMPLATE");
-      google.searchParams.set("text", title);
-      google.searchParams.set("dates", startLocal + "/" + endLocal);
-      google.searchParams.set("ctz", "Europe/London");
-      google.searchParams.set("location", location);
-      google.searchParams.set("details", description);
-      document.getElementById("google-calendar").href = google.toString();
+    <p style="margin:0 0 6px 0; font-weight:700; color:#151a24;">How large is the effect library?</p>
+    <p style="margin:0 0 16px 0; color:#3d4557;">More than 160 presets, split across dance and motion templates, camera moves, visual effects, image-to-video looks and viral trend formats.</p>
 
-      function escapeICS(value) {
-        return value.replace(/\\/g, "\\\\").replace(/\r?\n/g, "\\n")
-          .replace(/,/g, "\\,").replace(/;/g, "\\;");
-      }
+    <p style="margin:0 0 6px 0; font-weight:700; color:#151a24;">Can I change how strong an effect looks?</p>
+    <p style="margin:0 0 16px 0; color:#3d4557;">Yes. Most presets expose adjustable settings, and the guide lists each one with a short explanation of what it changes.</p>
 
-      function foldICSLine(line) {
-        // Fold at 75 UTF-8 octets, as required by the calendar file format.
-        let result = "", bytes = 0;
-        for (const character of line) {
-          const length = new TextEncoder().encode(character).length;
-          if (bytes + length > 75) {
-            result += "\r\n ";
-            bytes = 1;
-          }
-          result += character;
-          bytes += length;
-        }
-        return result;
-      }
+    <p style="margin:0 0 6px 0; font-weight:700; color:#151a24;">A download did not start. What now?</p>
+    <p style="margin:0 0 0 0; color:#3d4557;">Return to the releases page, reload it, and try again. If your browser blocks the download, check the address bar for a small icon and allow the download from there.</p>
+  </section>
 
-      const stamp = new Date().toISOString().replace(/[-:]/g, "")
-        .replace(/\.\d{3}/, "");
-      const lines = [
-        "BEGIN:VCALENDAR", "VERSION:2.0",
-        "PRODID:-//Queer Nerds York//Meetup Calendar//EN",
-        "CALSCALE:GREGORIAN",
-        "BEGIN:VTIMEZONE", "TZID:Europe/London",
-        "BEGIN:DAYLIGHT", "TZOFFSETFROM:+0000", "TZOFFSETTO:+0100",
-        "TZNAME:BST", "DTSTART:19960331T010000",
-        "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU", "END:DAYLIGHT",
-        "BEGIN:STANDARD", "TZOFFSETFROM:+0100", "TZOFFSETTO:+0000",
-        "TZNAME:GMT", "DTSTART:19961027T020000",
-        "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU", "END:STANDARD",
-        "END:VTIMEZONE", "BEGIN:VEVENT",
-        "UID:" + datePart + "-" + nextMeetup.start.replace(":", "") +
-          "@qn-york.github.io",
-        "DTSTAMP:" + stamp,
-        "DTSTART;TZID=Europe/London:" + startLocal,
-        "DTEND;TZID=Europe/London:" + endLocal,
-        "SUMMARY:" + escapeICS(title),
-        "LOCATION:" + escapeICS(location),
-        "DESCRIPTION:" + escapeICS(description),
-        "URL:https://qn-york.github.io/",
-        "END:VEVENT", "END:VCALENDAR"
-      ];
-      const ics = lines.map(foldICSLine).join("\r\n") + "\r\n";
-      const file = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-      const download = document.getElementById("ics-calendar");
-      download.href = URL.createObjectURL(file);
-      download.download = "queer-nerds-york-" + nextMeetup.date + ".ics";
-      calendarLinks.hidden = false;
-    }
-  </script>
+  <section style="background:#ffffff; border-radius:18px; padding:clamp(20px, 4vw, 36px); margin-bottom:26px; box-shadow:0 4px 18px rgba(24, 32, 56, 0.07);">
+    <h2 style="font-size:clamp(1.3rem, 3vw, 1.6rem); margin:0 0 14px 0; color:#151a24;">🔗 Project Links</h2>
+    <ul style="margin:0; padding-left:22px; color:#3d4557;">
+      <li style="margin-bottom:10px;"><strong>Repository:</strong> <a href="https://github.com/Jasonpro13/AI-Video-Effects-API" style="color:#7c3aed; text-decoration:none; font-weight:600;">github.com/Jasonpro13/AI-Video-Effects-API</a></li>
+      <li style="margin-bottom:0;"><strong>Downloads:</strong> <a href="https://github.com/Jasonpro13/AI-Video-Effects-API/releases" style="color:#7c3aed; text-decoration:none; font-weight:600;">github.com/Jasonpro13/AI-Video-Effects-API/releases</a></li>
+    </ul>
+  </section>
+
+</div>
+
 </body>
 </html>
